@@ -47,6 +47,7 @@ uv add -r requirements.txt
 - Create a `.env` file in the root directory
 - Add your API keys:
 
+  .env file
   ```[.env]
   ASSEMBLYAI_API_KEY=<your_assemblyai_api_key>
   SAMBANOVA_API_KEY=<your_sambanova_api_key>
@@ -54,8 +55,11 @@ uv add -r requirements.txt
   COHERE_API_KEY=<your_cohere_api_key>
   SAMBANOVA_MODEL="Meta-Llama-3.1-70B-Instruct"
   COHERE_MODEL="embed-multilingual-v3.0"
-  SERVER_URL="http://localhost:8000"
+  ```
 
+  .steamlit/secrets.toml file
+  ```[.steamlit/secrets.toml]
+  SERVER_URL="http://localhost:8000"
   ```
 
 5. Run the application
