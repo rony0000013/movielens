@@ -1,72 +1,87 @@
-# Movie Analysis RAG Application
+# 🎬 MovieLens 📸
 
 ## Overview
+
 This is a sophisticated web application that uses AI technologies to analyze movies, extract key points, and provide intelligent insights using Retrieval Augmented Generation (RAG).
 
 ## Features
+
 - Movie file upload and audio extraction
 - AssemblyAI-powered transcription and key point extraction
 - ChromaDB vector storage for semantic search
-- AI-powered query response system using Google's Gemini model
+- AI-powered query response system using SambaNova's Llama model
 
 ## Prerequisites
-- Python 3.8+
+
+- Python 3.11+
 - API Keys:
-  * AssemblyAI API Key
-  * Google API Key (for Gemini)
+  - AssemblyAI API Key
+  - Google API Key (for Gemini)
+  - SambaNova API Key
+  - Cohere API Key
 
 ## Setup Instructions
 
 1. Clone the repository
+
 ```bash
 git clone <repository_url>
-cd movie-analysis-rag-app
+cd movielens
 ```
 
 2. Create a virtual environment
+
 ```bash
-python -m venv venv
+uv venv
 source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 ```
 
 3. Install dependencies
+
 ```bash
-pip install -r requirements.txt
+uv add -r requirements.txt
 ```
 
 4. Configure API Keys
+
 - Create a `.env` file in the root directory
 - Add your API keys:
-  ```
-  ASSEMBLYAI_API_KEY=your_assemblyai_api_key
-  GOOGLE_API_KEY=your_gemini_api_key
+
+  ```[.env]
+  ASSEMBLYAI_API_KEY=<your_assemblyai_api_key>
+  SAMBANOVA_API_KEY=<your_sambanova_api_key>
+  GOOGLE_API_KEY=<your_google_api_key>
+  COHERE_API_KEY=<your_cohere_api_key>
+  SAMBANOVA_MODEL="Meta-Llama-3.1-70B-Instruct"
+  COHERE_MODEL="embed-multilingual-v3.0"
+  SERVER_URL="http://localhost:8000"
+
   ```
 
 5. Run the application
+
 ```bash
-flask run
+uv run fastapi run main.py
 ```
 
 ## Usage
+
 1. Upload a movie file
 2. The application will process the audio and extract key points
-3. Use the query interface to ask questions about the movie
+3. Use the query interface and voice to ask questions about the movie
 
 ## Technologies Used
-- Flask (Web Framework)
+
+- FastAPI (Web Framework)
 - AssemblyAI (Audio Transcription)
 - ChromaDB (Vector Database)
 - Google Gemini (LLM)
-- Sentence Transformers (Embeddings)
-
-## Limitations
-- Supports video file uploads
-- Requires stable internet connection
-- API rate limits may apply
+- Cohere (Embeddings)
+- SambaNova (LLM)
 
 ## Future Improvements
-- Direct integration with SambaNova Llama 3.1 405B model
-- Enhanced frontend with real-time processing updates
+
+- Enhanced user interface frontend with real-time processing updates
 - Batch processing for large movie files
 - More robust error handling
 - Caching mechanisms for faster responses
